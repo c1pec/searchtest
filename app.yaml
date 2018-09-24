@@ -1,0 +1,5 @@
+runtime: nodejs8
+
+env_variables:
+  GCLOUD_STORAGE_BUCKET: search-test-216617-bucket
+  ADMIN_PWD: admin123456

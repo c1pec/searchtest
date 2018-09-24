@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    a(href='/main') Retour à la recherche
+    block addFile
+        h2 Uploader un fichier
+        form(action='/manage/upload' method='post' enctype='multipart/form-data' id='form')
+            input(type='file' accept='.txt' name='file' id='file')
+            input(type='submit' value='Uploader')
+        p= uploadState
+    
+    block listFile
+        h2 Fichiers presents dans le cloud
+        ul
+            each file in files
+                li= file.name
+                    span  | 
+                    a(href='/display?file='+file.name) Afficher
+                    span  | 
+                    a(href='/manage/delete?file='+file.name) supprimer
+    
+    script(src="/javascripts/managescript.js")

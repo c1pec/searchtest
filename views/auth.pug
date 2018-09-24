@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    form(action="/auth", method="post")
+        p Enter admin password
+        input(id="testpwd", type="password", name="pwd")
+        input(type='submit' value='Send')
+        if msg
+            p= msg

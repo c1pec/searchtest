@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    block manageFiles
+        a(href='/manage') Cliquer ici pour gerer les fichiers dans le cloud
+
+    block searchInFiles
+        h2 Rechercher dans le cloud
+        form(action='/main/search' method='get' id='form')
+            input(type='text' placeholder='Mots à rechercher' name='textToSearch' id='text' autocomplete='off')
+            input(type='submit' value='Rechercher')
+
+    block searchResult
+        if searchMsg
+            h2= searchMsg
+        if matchingFiles
+            ul
+                each file in matchingFiles
+                    li
+                        strong #{file.name}
+                        span  | 
+                        a(href='/display?file='+file.name) Afficher
+                        p [...] #{file.content} [...]
+                        
+
+    script(src="/javascripts/mainscript.js")
